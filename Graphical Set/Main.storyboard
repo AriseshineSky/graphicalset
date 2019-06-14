@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Graphical_Set" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bj2-V0-99h" userLabel="Top Bar">
+                                <rect key="frame" x="16" y="46" width="343" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssw-1q-Rdi">
+                                        <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Deal 3 More Cards"/>
+                                        <connections>
+                                            <action selector="addThreeNewCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="owH-jb-tI7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="156-3a-WcP">
+                                        <rect key="frame" x="114.33333333333334" y="0.0" width="114.33333333333334" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4BV-qG-vSs">
+                                        <rect key="frame" x="228.66666666666666" y="0.0" width="114.33333333333334" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="New Game"/>
+                                        <connections>
+                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wiI-qY-27x"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tL-3I-vOL">
+                                <rect key="frame" x="16" y="82" width="343" height="646"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nJk-qr-ne0" appends="YES" id="DBq-Ez-mcr"/>
+                                    <outletCollection property="gestureRecognizers" destination="b6V-XK-bEC" appends="YES" id="8vq-Sv-odu"/>
+                                    <outletCollection property="gestureRecognizers" destination="MWu-g2-eHU" appends="YES" id="GlD-lw-Iw7"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bj2-V0-99h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="3Uc-3H-jll"/>
+                            <constraint firstItem="6tL-3I-vOL" firstAttribute="top" secondItem="Bj2-V0-99h" secondAttribute="bottom" constant="2" id="5ny-3w-hhT"/>
+                            <constraint firstItem="6tL-3I-vOL" firstAttribute="top" secondItem="Bj2-V0-99h" secondAttribute="bottom" id="6Da-Ko-sQG"/>
+                            <constraint firstItem="6tL-3I-vOL" firstAttribute="leading" secondItem="Bj2-V0-99h" secondAttribute="leading" id="8lP-5f-t2I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6tL-3I-vOL" secondAttribute="bottom" constant="50" id="COi-fw-qVp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bj2-V0-99h" secondAttribute="trailing" constant="16" id="aqh-Vj-ttf"/>
+                            <constraint firstItem="6tL-3I-vOL" firstAttribute="trailing" secondItem="Bj2-V0-99h" secondAttribute="trailing" id="loS-R5-1u3"/>
+                            <constraint firstItem="Bj2-V0-99h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="yEh-gY-sfa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardsInPlayView" destination="6tL-3I-vOL" id="zfW-BH-MV5"/>
+                        <outlet property="dealThreeMoreCardsButton" destination="ssw-1q-Rdi" id="PXe-lS-a1b"/>
+                        <outlet property="newGame" destination="4BV-qG-vSs" id="Shv-Y7-bhL"/>
+                        <outlet property="scoreLabel" destination="156-3a-WcP" id="9ko-6N-EZO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nJk-qr-ne0">
+                    <connections>
+                        <action selector="handleCardTapWithSender:" destination="BYZ-38-t0r" id="W6I-fw-7ea"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="b6V-XK-bEC">
+                    <connections>
+                        <action selector="handleDownSwipeWithSender:" destination="BYZ-38-t0r" id="FKW-3Q-lbP"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <rotationGestureRecognizer id="MWu-g2-eHU">
+                    <connections>
+                        <action selector="handleRotationWithSender:" destination="BYZ-38-t0r" id="XWS-eh-IMD"/>
+                    </connections>
+                </rotationGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-80.799999999999997" y="130.78817733990149"/>
+        </scene>
+    </scenes>
+</document>
