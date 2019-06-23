@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  Set
-//
-//  Created by Susana on 2/9/18.
-//  Copyright © 2018 SF. All rights reserved.
-//
+
 
 import UIKit
 
@@ -82,7 +76,7 @@ class ViewController: UIViewController {
         for index in 0..<grid.cellCount {
             if let cellFrame = grid[index] {
                 let card = setGame.cardsInGame[index]
-                let cardView = CardView(frame: cellFrame.insetBy(dx: CardSize.inset, dy: CardSize.inset))
+                let cardView = ButtonRender(frame: cellFrame.insetBy(dx: CardSize.inset, dy: CardSize.inset))
                 
                 cardView.color = card.cardColor
                 cardView.number = card.cardNumber.rawValue
@@ -102,7 +96,7 @@ class ViewController: UIViewController {
 
         for index in cardsInPlay.indices {
             let card = cardsInPlay[index]
-            let cardView = cardsInPlayView.subviews[index] as! CardView
+            let cardView = cardsInPlayView.subviews[index] as! ButtonRender
 
             if selectedCards.contains(card) {
                 cardView.borderWidth = CardSize.borderWidth

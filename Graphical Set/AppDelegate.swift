@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  Graphical Set
-//
-//  Created by Susana on 2/15/18.
-//  Copyright © 2018 SF. All rights reserved.
-//
+
 
 import UIKit
 

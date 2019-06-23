@@ -1,14 +1,8 @@
-//
-//  CardView.swift
-//  Graphical Set
-//
-//  Created by Susana on 2/16/18.
-//  Copyright © 2018 SF. All rights reserved.
-//
+
 
 import UIKit
 
-class CardView: UIView {
+class ButtonRender: UIView {
     
     // MARK: properties
     // initialize with default values, which will be overridden before drawing
@@ -168,10 +162,10 @@ class CardView: UIView {
 }
 
 // extension for color literals
-extension CardView {
+extension ButtonRender {
     struct Color {
         static let white = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        static let cardBackgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        static let cardBackgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         static let pink = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         static let purple = #colorLiteral(red: 0.3236978054, green: 0.1063579395, blue: 0.574860394, alpha: 1)
         static let teal = #colorLiteral(red: 0.1554745199, green: 0.612707145, blue: 0.7078045685, alpha: 1)
@@ -179,7 +173,7 @@ extension CardView {
 }
 
 // extension for card size calculations
-extension CardView {
+extension ButtonRender {
     private struct SizeRatio {
         static let gridInset: CGFloat = 10
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06

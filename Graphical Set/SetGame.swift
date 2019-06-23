@@ -1,17 +1,11 @@
-//
-//  Set.swift
-//  Set
-//
-//  Created by Susana on 2/9/18.
-//  Copyright © 2018 SF. All rights reserved.
-//
+
 
 import Foundation
 import GameplayKit.GKRandomSource
 
 class SetGame {
     
-    // MARK: properties
+
     
     var availableCards = [Card]()
     var cardsInGame = [Card]()
@@ -19,11 +13,11 @@ class SetGame {
     var hasMatch = false
     var score = 0
     
-    // MARK: public functions
+
     
     init() {
         initAvailableCards()
-        draw(numCards: GameConstant.numInitialCards)
+        draw(numCards: 12)
     }
     
     func selectCard(at index: Int) {
@@ -32,10 +26,8 @@ class SetGame {
         if (index >= 0 && index < cardsInGame.count) {
             let card = cardsInGame[index]
             
-            // deselect card if it's already been selected and fewer
-            // than 3 cards have been selected
-            // else select the card
-            if selectedCards.count < GameConstant.numCardsPerSet {
+
+            if selectedCards.count < 3 {
                 if let selectedCardIndex = selectedCards.index(of: card) {
                     selectedCards.remove(at: selectedCardIndex)
                 } else {
@@ -44,18 +36,15 @@ class SetGame {
                 }
             }
                 
-                // this block executes when 4th card is selected
-                // (selected card has not yet been added to selectedCard)
-            else if selectedCards.count == GameConstant.numCardsPerSet {
+                
+            else if selectedCards.count == 3 {
                 if checkForMatch() {
-                    draw(numCards: GameConstant.numCardsPerDeal)
-                    score += GameConstant.matchedSetPoints
+                    draw(numCards: 3)
+                    score += 3
                 } else {
-                    score += GameConstant.incorrectSetPenalty
+                    score -= 3
                 }
                 
-                // if the selected card was already matched,
-                // selectedCards should be empty
                 selectedCards = selectedCards.contains(card) ? [] : [card]
             }
         }
@@ -66,12 +55,12 @@ class SetGame {
             selectedCards.removeAll()
         }
         
-        draw(numCards: GameConstant.numCardsPerDeal)
-        score += GameConstant.dealCardsPenalty
+        draw(numCards: 3)
+        score += 3
     }
     
     func canDealMoreCards() -> Bool {
-        return availableCards.count >= GameConstant.numCardsPerDeal
+        return availableCards.count >= 3
     }
     
     func reset() {
@@ -82,14 +71,13 @@ class SetGame {
         score = 0
         
         initAvailableCards()
-        draw(numCards: GameConstant.numInitialCards)
+        draw(numCards: 12)
     }
     
     func shuffleCardsInPlay() {
         cardsInGame = shuffle(cardsInGame)
     }
-    
-    // MARK: private functions
+
     
     private func initAvailableCards() {
         for num in Card.CardNumber.allVallues {
@@ -122,7 +110,6 @@ class SetGame {
         return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: availableCards) as! [Card]
     }
     
-    // if selected cards are a match, remove them from cardsInPlay
     private func checkForMatch() -> Bool {
         hasMatch = isSet()
         
@@ -137,9 +124,8 @@ class SetGame {
         return hasMatch
     }
     
-    // return true if selected cards are a set or return false otherwise
     private func isSet() -> Bool {
-        if selectedCards.count < GameConstant.numCardsPerSet {
+        if selectedCards.count < 3 {
             return false
         }
         
@@ -147,25 +133,21 @@ class SetGame {
         let card2 = selectedCards[1]
         let card3 = selectedCards[2]
         
-        // check for color
         if (!((card1.cardColor == card2.cardColor) && (card1.cardColor == card3.cardColor) ||
             (card1.cardColor != card2.cardColor) && (card1.cardColor != card3.cardColor) && (card2.cardColor != card3.cardColor))) {
             return false
         }
         
-        // check for number
         if (!((card1.cardNumber == card2.cardNumber) && (card1.cardNumber == card3.cardNumber) ||
             (card1.cardNumber != card2.cardNumber) && (card1.cardNumber != card3.cardNumber) && (card2.cardNumber != card3.cardNumber))) {
             return false
         }
         
-        // check for symbol
         if (!((card1.cardShape == card2.cardShape) && (card1.cardShape == card3.cardShape) ||
             (card1.cardShape != card2.cardShape) && (card1.cardShape != card3.cardShape) && (card2.cardShape != card3.cardShape))) {
             return false
         }
         
-        // check for shading
         if (!((card1.cardShading == card2.cardShading) && (card1.cardShading == card3.cardShading) ||
             (card1.cardShading != card2.cardShading) && (card1.cardShading != card3.cardShading) && (card2.cardShading != card3.cardShading))) {
             return false
@@ -177,13 +159,7 @@ class SetGame {
 
 extension SetGame {
     private struct GameConstant {
-        static let numInitialCards: Int = 12
-        static let numCardsPerDeal: Int = 3
-        static let numCardsPerSet: Int = 3
-        
         static let dealCardsPenalty: Int = -3
-        static let incorrectSetPenalty: Int = -3
-        static let matchedSetPoints: Int = 3
     }
 }
 
